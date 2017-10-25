@@ -35,7 +35,32 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
         });
     };
     //end of 1; 
-
+ //1:command set ajax calling function
+    var commonSetHTTPService2 = function (method, data, url, callback) {
+        $http({
+            method: method,
+            url: baseURL + url,
+            dataType: 'JSON',
+            data: data,
+            headers: {
+                "Content-type": "application/json"
+            }
+        }).then(function (response) {
+            console.log(response);
+            if (response.data.status == true) {
+                callback(response.data.data);
+            }
+            if (response.data.status == false) {
+                console.log(',,,');
+                toastr.error(response.data.message, 'Error');
+            }
+            $('#loader').hide();
+        }, function (error) {
+            $('#loader').hide();
+            toastr.error(error.data.message, 'Error');
+        });
+    };
+   
     //1:command get ajax calling function
     var commonGetHTTPService = function (method, data, url, callback) {
         $http({
@@ -168,7 +193,7 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
         $scope.data.qid = $scope.questionData.id;
         $scope.data.aid = $scope.radvalue.value;
         $scope.data.fid = $rootScope.fid;
-        commonSetHTTPService('Post', $scope.data, 'main/save_response', function (result) {
+        commonSetHTTPService2('Post', $scope.data, 'main/save_response', function (result) {
             if (count == 10) {
                 window.location = "http://www.judgemeyar.tk/judgeMe/#!/";
             } else {
