@@ -2,7 +2,7 @@ app.controller('quizCtrl', function ($scope, $http, $rootScope, toastr, $locatio
 
 
     //0:variable decalration
-    var baseURL = "http://localhost/judge_me/index.php/";
+    var baseURL = "http://www.judgemeyar.tk/judge_me/index.php/";
     $scope.loginData = {}; //info of school data
     $rootScope.isLoggedIn = 0;
     $scope.uid = 1;
@@ -81,7 +81,7 @@ app.controller('quizCtrl', function ($scope, $http, $rootScope, toastr, $locatio
                 $scope.name = result;
             } else {
                 $scope.loginStatus = 0;
-                window.location = "http://localhost/judgeMe/#!/";
+                window.location = "http://www.judgemeyar.tk/judgeMe/#!/";
             }
         });
     }
@@ -90,7 +90,7 @@ app.controller('quizCtrl', function ($scope, $http, $rootScope, toastr, $locatio
 
     $scope.logout = function () {
         commonSetHTTPService('Post', '', 'school/school_logout', function (result) {
-            window.location = "http://localhost/schoolkit/app/school/login.html";
+            window.location = "http://www.judgemeyar.tk/schoolkit/app/school/login.html";
         });
     }
 
@@ -102,17 +102,17 @@ app.controller('quizCtrl', function ($scope, $http, $rootScope, toastr, $locatio
         $scope.data.uid = $scope.uid;
         commonSetHTTPService('Post', $scope.data, 'main/save_response', function (result) {
             if (count == 10) {
-                window.location = "http://localhost/judgeMe/#!/";
+                window.location = "http://www.judgemeyar.tk/judgeMe/#!/";
             } else {
                 $scope.listQuestion(count);
-            } // window.location = "http://localhost/judgeMe/#!/quiz";
+            } // window.location = "http://www.judgemeyar.tk/judgeMe/#!/quiz";
         });
     }
 
 
     $scope.skipResponse = function (count) {
         if (count == 10) {
-            window.location = "http://localhost/judgeMe/#!/";
+            window.location = "http://www.judgemeyar.tk/judgeMe/#!/";
         } else {
             $scope.listQuestion(count);
         }

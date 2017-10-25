@@ -2,7 +2,7 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
 
 
     //0:variable decalration
-    var baseURL = "http://localhost/judge_me/index.php/";
+    var baseURL = "http://www.judgemeyar.tk/judge_me/index.php/";
     $scope.loginData = {}; //info of school data
     $rootScope.isLoggedIn = 0;
     $scope.count = 0;
@@ -69,7 +69,7 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
             commonSetHTTPService('Post', data, 'main/set_session', function (result) {
                 $rootScope.fid = result;
                 console.log($scope.fid);
-                window.location = "http://localhost/judgeMe/#!/quiz";
+                window.location = "http://www.judgemeyar.tk/judgeMe/#!/quiz";
             });
         } else {
             toastr.error('Enter Your Name First', 'Error');
@@ -107,7 +107,7 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
 
     $scope.logout = function () {
         commonSetHTTPService('Post', '', 'school/school_logout', function (result) {
-            window.location = "http://localhost/schoolkit/app/school/login.html";
+            window.location = "http://www.judgemeyar.tk/schoolkit/app/school/login.html";
         });
     }
 
@@ -149,7 +149,7 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
                 $scope.name = result;
             } else {
                 $scope.loginStatus = 0;
-                window.location = "http://localhost/judgeMe/#!/";
+                window.location = "http://www.judgemeyar.tk/judgeMe/#!/";
             }
         });
     }
@@ -158,7 +158,7 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
 
     $scope.logout = function () {
         commonSetHTTPService('Post', '', 'school/school_logout', function (result) {
-            window.location = "http://localhost/schoolkit/app/school/login.html";
+            window.location = "http://www.judgemeyar.tk/schoolkit/app/school/login.html";
         });
     }
 
@@ -170,17 +170,17 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
         $scope.data.fid = $rootScope.fid;
         commonSetHTTPService('Post', $scope.data, 'main/save_response', function (result) {
             if (count == 10) {
-                window.location = "http://localhost/judgeMe/#!/";
+                window.location = "http://www.judgemeyar.tk/judgeMe/#!/";
             } else {
                 $scope.listQuestion(count);
-            } // window.location = "http://localhost/judgeMe/#!/quiz";
+            } // window.location = "http://www.judgemeyar.tk/judgeMe/#!/quiz";
         });
     }
 
 
     $scope.skipResponse = function (count) {
         if (count == 10) {
-            window.location = "http://localhost/judgeMe/#!/";
+            window.location = "http://www.judgemeyar.tk/judgeMe/#!/";
         } else {
             $scope.listQuestion(count);
         }
