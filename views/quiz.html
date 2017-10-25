@@ -1,0 +1,28 @@
+<form>
+    <div class="row">
+        <div class="col-xs-1">
+        </div>
+        <div class="col-xs-10">
+            Question: {{questionData.question}}
+            <div class="radio" >
+                <input ng-model="radvalue.value" type="radio" name="optionData[0].id" ng-value="optionData[0].id">{{optionData[0].option}}
+            </div>
+             <div class="radio" >
+                <input ng-model="radvalue.value" type="radio" name="optionData[1].id" ng-value="optionData[1].id">{{optionData[1].option}}
+            </div>
+             <div class="radio" >
+                <input ng-model="radvalue.value" type="radio" name="optionData[2].id" ng-value="optionData[2].id">{{optionData[2].option}}
+            </div>
+             <div class="radio" >
+                <input ng-model="radvalue.value" type="radio" name="optionData[3].id" ng-value="optionData[3].id">{{optionData[3].option}}
+            </div>
+        </div>
+        <div class="col-xs-1">
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-primary" ng-click="saveResponse(count)">Save & Continue </button>
+    <button type="button" class="btn btn-primary" ng-click="skipResponse(count)">Skip & Continue</button>
+   
+
+</form>
