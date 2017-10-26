@@ -57,7 +57,6 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
                 console.log(',,,');
                 toastr.error(response.data.message, 'Error');
             }
-            $('#loader').hide();
         }, function (error) {
             $('#loader').hide();
             toastr.error(error.data.message, 'Error');

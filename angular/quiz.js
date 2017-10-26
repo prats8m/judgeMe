@@ -38,7 +38,7 @@ app.controller('quizCtrl', function ($scope, $http, $rootScope, toastr, $locatio
     //end of 1; 
 
     //1:command get ajax calling function
-    var commonGetHTTPService = function (method, data, url, callback) {
+    var commonGetHTTPService2 = function (method, data, url, callback) {
         $http({
             method: method,
             url: baseURL + url,
@@ -55,7 +55,6 @@ app.controller('quizCtrl', function ($scope, $http, $rootScope, toastr, $locatio
             if (response.data.status == false) {
                 toastr.error(response.data.message, 'Error');
             }
-            $('#loader').hide();
         }, function (error) {
             $('#loader').hide();
             toastr.error(error.data.message, 'Error');
@@ -100,7 +99,7 @@ app.controller('quizCtrl', function ($scope, $http, $rootScope, toastr, $locatio
         $scope.data.qid = $scope.questionData.id;
         $scope.data.aid = $scope.radvalue.value;
         $scope.data.uid = $scope.uid;
-        commonSetHTTPService('Post', $scope.data, 'main/save_response', function (result) {
+        commonSetHTTPService2('Post', $scope.data, 'main/save_response', function (result) {
             if (count == 10) {
                 window.location = "http://www.judgemeyar.tk/judgeMe/#!/";
             } else {
