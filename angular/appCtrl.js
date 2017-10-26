@@ -256,14 +256,13 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
 
 
  $scope.saveYourResponse = function (count) {
-        console.log($scope.radvalue.value);
         $('#loader').show();
         $scope.data = {};
+        if($scope.radvalue){
         $scope.data.qid = $scope.questionData.id;
         $scope.data.aid = $scope.radvalue.value;
-        if($scope.radvalue){
-            $scope.radvalue = undefined;
         commonSetHTTPService2('Post', $scope.data, 'main/save_your_response', function (result) {
+            $scope.radvalue = undefined;
             if (count == 10) {
               $rootScope.link2=1
             } else {
