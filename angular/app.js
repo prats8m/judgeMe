@@ -17,7 +17,7 @@ var app = angular.module("judgeMe", ['ngRoute', 'toastr']).config(function (toas
         containerId: 'toast-container',
         maxOpened: 0,
         newestOnTop: true,
-        positionClass: 'toast-top-right',
+        positionClass: 'toast-bottom-center',
         preventDuplicates: false,
         preventOpenDuplicates: true,
         target: 'body'
