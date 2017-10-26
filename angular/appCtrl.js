@@ -90,6 +90,7 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
     $scope.startJudging = function () {
         var data = {};
         data.name = $scope.fname;
+         $('#loader').show();
         if (data.name) {
             commonSetHTTPService('Post', data, 'main/set_session', function (result) {
                 $rootScope.fid = result;
@@ -106,6 +107,7 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
     $scope.createLink = function () {
         var data = {};
         data.name = $scope.fname;
+        $('#loader').show();
         if (data.name) {
             commonSetHTTPService('Post', data, 'main/create_link', function (result) {
                 $scope.link = result
@@ -141,6 +143,7 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
     $scope.listQuestion = function (count) {
         $scope.question = {};
         $scope.option = {};
+        $('#loader').show();
         commonGetHTTPService('Get', '', 'main/list_questions/' + $scope.count, function (result) {
             $scope.count = $scope.count + 1;
             $scope.questionData = result.question;
@@ -151,6 +154,7 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
     $scope.listUserResponse = function (count) {
         $scope.question = {};
         $scope.option = {};
+        $('#loader').show();
         commonGetHTTPService('Get', '', 'main/list_response', function (result) {
             $scope.userResponse = result;
         });
@@ -189,6 +193,7 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
 
     $scope.saveResponse = function (count) {
         console.log($scope.radvalue.value);
+        $('#loader').show();
         $scope.data = {};
         $scope.data.qid = $scope.questionData.id;
         $scope.data.aid = $scope.radvalue.value;
