@@ -114,7 +114,8 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
         if (data.name) {
             commonSetHTTPService('Post', data, 'main/create_link', function (result) {
                 $rootScope.link = result;
-            });
+                window.location = "http://www.judgemeyar.tk/judgeMe/#!/create";
+           });
         } else {
             toastr.error('Enter Your Name First', 'Error');
         }
@@ -122,7 +123,7 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
 
     $scope.gotoCreateLink= function(){
         $scope.createLink();
-         window.location = "http://www.judgemeyar.tk/judgeMe/#!/create";
+         
     }
            
 
