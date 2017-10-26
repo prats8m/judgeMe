@@ -272,6 +272,7 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
 
         }
         else{
+            $('#loader').hide();
              toastr.error('Enter Your Choice First', 'Error');
         }
     }
