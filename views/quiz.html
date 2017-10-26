@@ -6,16 +6,24 @@
         <div class="col-xs-10">
             Question: {{questionData.question}}
             <div class="radio" >
-                <input ng-model="radvalue.value" type="radio" name="optionData[0].id" ng-value="optionData[0].id">{{optionData[0].option}}
+                <input ng-model="radvalue.value" type="radio" name="optionData[0].id" ng-disabled="disable" ng-click="checkAnswer(optionData[0].id)" ng-value="optionData[0].id">{{optionData[0].option}}
+                <img id="1{{optionData[0].id}}"  style="display: none;" src="./images/right.jpg" width="16%">
+                <img id="2{{optionData[0].id}}" style="display: none;" src="./images/wrong.png" width="16%">
             </div>
              <div class="radio" >
-                <input ng-model="radvalue.value" type="radio" name="optionData[1].id" ng-value="optionData[1].id">{{optionData[1].option}}
+                <input ng-model="radvalue.value" type="radio" name="optionData[1].id" ng-disabled="disable" ng-click="checkAnswer(optionData[1].id)" ng-value="optionData[1].id">{{optionData[1].option}}
+                <img id="1{{optionData[1].id}}"  style="display: none;" src="./images/right.jpg" width="16%">
+                <img id="2{{optionData[1].id}}" style="display: none;" src="./images/wrong.png" width="16%">
             </div>
              <div class="radio" >
-                <input ng-model="radvalue.value" type="radio" name="optionData[2].id" ng-value="optionData[2].id">{{optionData[2].option}}
+                <input ng-model="radvalue.value" type="radio" name="optionData[2].id" ng-disabled="disable" ng-click="checkAnswer(optionData[2].id)" ng-value="optionData[2].id">{{optionData[2].option}}
+                <img id="1{{optionData[2].id}}"  style="display: none;" src="./images/right.jpg" width="16%">
+                <img id="2{{optionData[2].id}}" style="display: none;" src="./images/wrong.png" width="16%">
             </div>
              <div class="radio" >
-                <input ng-model="radvalue.value" type="radio" name="optionData[3].id" ng-value="optionData[3].id">{{optionData[3].option}}
+                <input ng-model="radvalue.value" type="radio" name="optionData[3].id" ng-disabled="disable" ng-click="checkAnswer(optionData[3].id)" ng-value="optionData[3].id">{{optionData[3].option}}
+                <img id="1{{optionData[3].id}}"  style="display: none;" src="./images/right.jpg" width="16%">
+                <img id="2{{optionData[3].id}}" style="display: none;" src="./images/wrong.png" width="16%">
             </div>
         </div>
         <div class="col-xs-1">

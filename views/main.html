@@ -16,7 +16,7 @@
     <div class="row">
         <center>
             <button type="button" class="btn btn-primary" ng-click="startJudging()">Start Judging</button>
-            <button type="button" class="btn btn-primary" ng-click="createLink()">Create Your Link</button>
+            <button type="button" class="btn btn-primary" ng-click="gotoCreateLink()">Create Your Link</button>
         </center>
        </div>
        <div id="input" ng-hide="1">
@@ -31,17 +31,20 @@
 
 <div ng-show="loginStatus">
 <h3>{{name}}'s Previous Responses</h3>
-<table class="table table-striped">
+<p ng-hide="done"> Judge {{name}} to view other people response</p>
+<table class="table table-striped" ng-show="done">
     <thead>
         <tr>
             <th>Name</th>
+            <th>Right Answers</th>
             <th>View Response</th>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="data in userResponse ">
-            <td>{{data.name}}</td>
-            <td><button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#myModal" ng-click="singleResponse(data.friend_id)">Click Here</button></td>
+            <td>{{data.friend.name}}</td>
+            <td>{{data.count}}</td>
+            <td><button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#myModal" ng-click="singleResponse(data.friend.friend_id)">Click Here</button></td>
         </tr>
         </tbody>
 </table>

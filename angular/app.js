@@ -35,6 +35,10 @@ app.config(function ($routeProvider) {
             templateUrl: "./views/quiz.html",
             controller: "appCtrl"
         })
+         .when("/create", {
+            templateUrl: "./views/create.html",
+            controller: "appCtrl"
+        })
         .otherwise({
             templateUrl: "./views/404.html",
         });

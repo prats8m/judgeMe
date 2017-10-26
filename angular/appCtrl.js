@@ -6,6 +6,9 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
     $scope.loginData = {}; //info of school data
     $rootScope.isLoggedIn = 0;
     $scope.count = 0;
+    $scope.aid = 0;
+    $scope.result = 0;
+   
     //end of 0
 
     //1:command set ajax calling function
@@ -110,12 +113,19 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
         $('#loader').show();
         if (data.name) {
             commonSetHTTPService('Post', data, 'main/create_link', function (result) {
-                $scope.link = result
+                $rootScope.link = result;
+                // $window.localStorage.setItem('link2',result)
             });
         } else {
             toastr.error('Enter Your Name First', 'Error');
         }
     }
+
+    $scope.gotoCreateLink= function(){
+        $scope.createLink();
+         window.location = "http://www.judgemeyar.tk/judgeMe/#!/create";
+    }
+           
 
     $scope.isLoggedIn = function () {
         commonGetHTTPService('Get', '', 'main/is_logged_in', function (result) {
@@ -141,6 +151,11 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
 
 
     $scope.listQuestion = function (count) {
+        $('#2'+$scope.aid).hide();
+        if($scope.answerData)
+        $('#1'+$scope.answerData.a_id).hide();
+        $('#1'+$scope.aid).hide(); 
+         $scope.disable = 0;
         $scope.question = {};
         $scope.option = {};
         $('#loader').show();
@@ -148,16 +163,44 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
             $scope.count = $scope.count + 1;
             $scope.questionData = result.question;
             $scope.optionData = result.option;
+            $scope.answerData = result.answer[0];
         });
+    }
+
+    $scope.checkAnswer = function(aid){
+        $scope.aid = aid;
+        console.log('aid '+aid);
+        console.log('a_id '+$scope.answerData.a_id);
+        $scope.disable = 1;
+        if(aid == $scope.answerData.a_id){
+        $('#1'+aid).show();  
+        $scope.result = 1;  
+        }
+        else{
+        $('#2'+aid).show();
+        $('#1'+$scope.answerData.a_id).show();
+        $scope.result = 0;
+    }
+    
     }
 
     $scope.listUserResponse = function (count) {
         $scope.question = {};
         $scope.option = {};
         $('#loader').show();
+        if( $rootScope.done){
         commonGetHTTPService('Get', '', 'main/list_response', function (result) {
+            for(var idx in result){
+                if(!result[idx].count){
+                    result[idx].count = "Old Version Response";
+                }
+            }
             $scope.userResponse = result;
         });
+    }
+    else{
+         $rootScope.done = 0;
+    }
     }
 
 
@@ -183,7 +226,7 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
         });
     }
     $scope.listQuestion();
-    $scope.isLoggedIn();
+    // $scope.isLoggedIn();
 
     $scope.logout = function () {
         commonSetHTTPService('Post', '', 'school/school_logout', function (result) {
@@ -198,8 +241,10 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
         $scope.data.qid = $scope.questionData.id;
         $scope.data.aid = $scope.radvalue.value;
         $scope.data.fid = $rootScope.fid;
+        $scope.data.result = $scope.result;
         commonSetHTTPService2('Post', $scope.data, 'main/save_response', function (result) {
             if (count == 10) {
+                $rootScope.done = 1;
                 window.location = "http://www.judgemeyar.tk/judgeMe/#!/";
             } else {
                 $scope.listQuestion(count);
@@ -208,8 +253,25 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
     }
 
 
+ $scope.saveYourResponse = function (count) {
+        console.log($scope.radvalue.value);
+        $('#loader').show();
+        $scope.data = {};
+        $scope.data.qid = $scope.questionData.id;
+        $scope.data.aid = $scope.radvalue.value;
+        commonSetHTTPService2('Post', $scope.data, 'main/save_your_response', function (result) {
+            if (count == 10) {
+              $rootScope.link2=1
+            } else {
+                $scope.listQuestion(count);
+            }
+        });
+    }
+
+
     $scope.skipResponse = function (count) {
         if (count == 10) {
+            $rootScope.done = 1;
             window.location = "http://www.judgemeyar.tk/judgeMe/#!/";
         } else {
             $scope.listQuestion(count);

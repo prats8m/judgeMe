@@ -1,0 +1,32 @@
+<form ng-hide="link2">
+    <div class="row">
+        <div class="col-xs-1">
+        </div>
+            <div id="loader" class="load" ></div>
+        <div class="col-xs-10">
+            Question: {{questionData.question}}
+            <div class="radio" >
+                <input ng-model="radvalue.value" type="radio" name="optionData[0].id"   ng-value="optionData[0].id">{{optionData[0].option}}
+            </div>
+             <div class="radio" >
+                <input ng-model="radvalue.value" type="radio" name="optionData[1].id"  ng-value="optionData[1].id">{{optionData[1].option}}
+            </div>
+             <div class="radio" >
+                <input ng-model="radvalue.value" type="radio" name="optionData[2].id"  ng-value="optionData[2].id">{{optionData[2].option}}
+            </div>
+             <div class="radio" >
+                <input ng-model="radvalue.value" type="radio" name="optionData[3].id"  ng-value="optionData[3].id">{{optionData[3].option}}
+            </div>
+        </div>
+        <div class="col-xs-1">
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-primary" ng-click="saveYourResponse(count)">Save & Continue </button>
+</form>
+ <center>
+     <div id="input" ng-hide="1">
+        {{link}}
+        </div>
+        <button type="button" id="copy" class="btn btn-info" ng-show="link2" onclick="copyToClipboard('#input')">Copy your link to Clipboard</button>
+        </center>
