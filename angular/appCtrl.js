@@ -109,11 +109,11 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
     $scope.createLink = function () {
         var data = {};
         data.name = $scope.fname;
+        $window.localStorage.setItem('user',1)
         $('#loader').show();
         if (data.name) {
             commonSetHTTPService('Post', data, 'main/create_link', function (result) {
                 $rootScope.link = result;
-                // $window.localStorage.setItem('link2',result)
             });
         } else {
             toastr.error('Enter Your Name First', 'Error');
@@ -187,7 +187,10 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
         $scope.question = {};
         $scope.option = {};
         $('#loader').show();
-        if( $rootScope.done){
+        $scope.user = $window.localStorage.getItem('user')
+        console.log($scope.user);
+        if( $rootScope.done || $scope.user){
+            $rootScope.done = 1;
         commonGetHTTPService('Get', '', 'main/list_response', function (result) {
             for(var idx in result){
                 if(!result[idx].count){
