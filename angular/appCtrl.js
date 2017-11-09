@@ -262,6 +262,7 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
         $('#loader').show();
         $scope.data = {};
         if($scope.radvalue){
+            $scope.disable = 1;
         $scope.data.qid = $scope.questionData.id;
         $scope.data.aid = $scope.radvalue.value;
         commonSetHTTPService2('Post', $scope.data, 'main/save_your_response', function (result) {
