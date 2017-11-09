@@ -100,6 +100,7 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
                 window.location = "http://www.judgemeyar.tk/judgeMe/#!/quiz";
             });
         } else {
+            $('#loader').hide();
             toastr.error('Enter Your Name First', 'Error');
 
         }
