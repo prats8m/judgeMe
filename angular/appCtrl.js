@@ -117,6 +117,7 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
                 window.location = "http://www.judgemeyar.tk/judgeMe/#!/create";
            });
         } else {
+            $('#loader').hide();
             toastr.error('Enter Your Name First', 'Error');
         }
     }
