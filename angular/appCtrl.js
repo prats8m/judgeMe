@@ -248,7 +248,7 @@ app.controller('appCtrl', function ($scope, $http, $rootScope, toastr, $location
         $scope.data.aid = $scope.radvalue.value;
         $scope.data.fid = $rootScope.fid;
         $scope.data.result = $scope.result;
-        $scope.disable2 = 0;
+        $scope.disable2 = 1;
         commonSetHTTPService2('Post', $scope.data, 'main/save_response', function (result) {
             if (count == 10) {
                 $rootScope.done = 1;
